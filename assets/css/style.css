@@ -7,6 +7,14 @@ header, div, footer {
     background-color: #f5f5f5;
 }
 
+#trivia {
+    display: none;
+}
+
+#results {
+    display: none;
+}
+
 button:hover {
     background-color: #a9cfe9;
 }

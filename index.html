@@ -21,38 +21,39 @@
         <h1>Totally Trivial Trivia!</h1>
     </header>
 
-    <!-- div displaying time remaining -->
-    <div class="container shadow">
-        <div class="row">
-            <div class="col p-3 h3 text-center">
-                <p id="time-remaining"></p>
+    <!-- div start display -->
+    <div class="container shadow mb-3" id="start">
+        <div class="row justify-content-center">
+            <div class="col-auto p-3 h4 text-center">
+                <p>You have 30 seconds to answer all questions.</p>
+                <br>
+                <p>Click To Start</p>
+                <button class="h4" id="start-btn">START</button>
             </div>
         </div>
     </div>
 
-    <!-- div displaying trivia questions & answer choices -->
-    <div class="container shadow">
+    <!-- div trivia questions & answer choices -->
+    <div class="container shadow mb-3" id="trivia">
         <div class="row text-center">
-            <div class="col p-3 h3" id="trivia"></div>
+            <div class="col p-3 h3" id="time-remaining"></div>
         </div>
-    </div>
-
-    <!-- div displaying submit button -->
-    <div class="container shadow">
         <div class="row justify-content-center">
-            <div class="col-auto p-3" id="submit">
-                <button class="h2" id="start">Start</button>
+            <div class="col-auto p-3" id="questions">
+                <button class="h4" id="submit-btn">Submit</button>
             </div>
         </div>
     </div>
 
     <!-- div displaying results -->
-    <div class="container shadow mb-3">
+    <div class="container shadow mb-3" id="results">
         <div class="row text-center">
-            <div class="col p-3 h3" id="results">
-                <p id="total-correct"></p>
-                <p id="total-incorrect"></p>
-                <p id="total-unanswered"></p>
+            <div class="col p-3 h3">
+                <p>Here's how you did:</p>
+                <br>
+                <p id="total-correct">Correct Answers: </p>
+                <p id="total-wrong">Incorrect Answers: </p>
+                <p id="total-unanswered">Unanswered: </p>
             </div>
         </div>
     </div>
