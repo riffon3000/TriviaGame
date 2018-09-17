@@ -94,7 +94,7 @@ $(document).ready(function () {
         $('.questions :not("#submit-btn")').empty();
 
         // loops through questions
-        for (var j = 0; j < 8; j++) {
+        for (var j = 0; j < questions.length; j++) {
             $('.questions').prepend('<div class="' + questions[j].name + '"></div>');
             $(questions[j].class).append('<div>' + questions[j].question + '</div>');
 
@@ -112,7 +112,7 @@ $(document).ready(function () {
         var totalWrong = 0;
 
         // loop through questions array to check answers
-        for (var i = 0; i < 8; i++) {
+        for (var i = 0; i < questions.length; i++) {
             if ($('input:radio[name="' + questions[i].name + '"]:checked').val() === questions[i].answer) {
                 totalCorrect++;
             }
