@@ -70,36 +70,39 @@ $(document).ready(function () {
     var counter = function (sec) {
 
         var timeRemaining = setInterval(function () {
-            sec = sec--;
-            $('#time-remaining').html('Time remaining: ' + sec + ' seconds');
+            sec = sec - 1;
+            $('#time-remaining').text('Time remaining: ' + sec + ' seconds');
 
             if (sec <= 0) {
+                clearInterval(timeRemaining);
                 triviaResult();
-                return;
+                
             }
         }, 1000);
 
         // click event for submit button that stops timer
         $('#submit-btn').on('click', function () {
             clearInterval(timeRemaining);
+            triviaResult();
+
         })
     };
 
-    var labels = ["one", "two", "three", "four"];
+    var labels = ["first", "second", "third", "fourth"];
 
     var displayQuestions = function () {
         $('.questions :not("#submit-btn")').empty();
 
         // loops through questions
         for (var j = 0; j < questions.length; j++) {
-            $('.questions').prepend('div class="' + questions[j].name + '"></div>');
+            $('.questions').prepend('<div class="' + questions[j].name + '"></div>');
             $(questions[j].class).append('<div>' + questions[j].question + '</div>');
 
             //   loops through choices
             for (var i = 0; i < 4; i++) {
                 $(questions[j].class).append('<input type="radio" name="' + questions[j].name + '"value="' + questions[j].choices[i] + '"/><label for="' + labels[i] + '">' + questions[j].choices[i] + '</label>');
             }
-            $('.questions').prepend('<hr></hr>');
+            $('.questions').prepend('<hr>');
         }
     }
 
@@ -107,21 +110,21 @@ $(document).ready(function () {
         $("#trivia").hide();
         var totalCorrect = 0;
         var totalWrong = 0;
-        var totalUnanswered = questions.length - (totalCorrect + totalWrong);
-
+        
         // loop through questions array to check answers
-        for (var z = 0; z < questions.lenth; z++) {
-            if ($("input:radio[name=\"" + questions[z].name + "\"]:checked").val() === questions[z].answer) {
+        for (var i = 0; i < questions.lenth; i++) {
+            if ($('input:radio[name="' + questions[i].name + '"]:checked').val() === questions[i].answer) {
                 totalCorrect++;
             }
             else {
                 totalWrong++;
             };
         }
+        var totalUnanswered = questions.length - totalCorrect - totalWrong;
         $("#total-correct").append(totalCorrect);
         $("#total-wrong").append(totalWrong);
         $("#total-unanswered").append(totalUnanswered);
         $("#results").show();
-        clearInterval(timeRemaining);
+        return;
     }
 });
