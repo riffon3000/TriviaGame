@@ -95,7 +95,7 @@ $(document).ready(function () {
 
         // loops through questions
         for (var j = 0; j < questions.length; j++) {
-            $('.questions').prepend('<div class="col-auto p-3 ' + questions[j].name + '"></div>');
+            $('.questions').prepend('<div class="' + questions[j].name + '"></div>');
             $(questions[j].class).append('<div>' + questions[j].question + '</div>');
 
             //   loops through choices
