@@ -76,7 +76,7 @@ $(document).ready(function () {
             if (sec <= 0) {
                 clearInterval(timeRemaining);
                 triviaResult();
-                
+
             }
         }, 1000);
 
@@ -88,13 +88,13 @@ $(document).ready(function () {
         })
     };
 
-    var labels = ["first", "second", "third", "fourth"];
+    var labels = ["one", "two", "three", "four"];
 
     var displayQuestions = function () {
         $('.questions :not("#submit-btn")').empty();
 
         // loops through questions
-        for (var j = 0; j < questions.length; j++) {
+        for (var j = 0; j < 8; j++) {
             $('.questions').prepend('<div class="' + questions[j].name + '"></div>');
             $(questions[j].class).append('<div>' + questions[j].question + '</div>');
 
@@ -110,9 +110,9 @@ $(document).ready(function () {
         $("#trivia").hide();
         var totalCorrect = 0;
         var totalWrong = 0;
-        
+
         // loop through questions array to check answers
-        for (var i = 0; i < questions.lenth; i++) {
+        for (var i = 0; i < 8; i++) {
             if ($('input:radio[name="' + questions[i].name + '"]:checked').val() === questions[i].answer) {
                 totalCorrect++;
             }
