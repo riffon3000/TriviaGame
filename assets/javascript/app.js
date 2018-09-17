@@ -6,56 +6,56 @@ $(document).ready(function () {
             choices: ["A Bug's Life", "Monsters Inc.", "Toy Story", "The Lion King"],
             answer: "Toy Story",
             name: "toy",
-            class:".toy",
+            class: ".toy",
         },
         {
             question: "Which of these is NOT a name of one of the Spice Girls?",
             choices: ["Sporty Spice", "Fred Spice", "Scary Spice", "Posh Spice"],
             answer: "Fred Spice",
             name: "fred",
-            class:".fred",
+            class: ".fred",
         },
         {
             question: "Which NBA team won the most titles in the 90's?",
             choices: ["New York Knicks", "Portland Trailblazers", "Los Angeles Lakers", "Chicago Bulls"],
             answer: "Chicago Bulls",
             name: "bulls",
-            class:".bulls",
+            class: ".bulls",
         },
         {
             question: "Which group released the hit song, \"Smells Like Teen Spirit\"?",
             choices: ["Nirvana", "Backstreet Boys", "The Offspring", "No Doubt"],
             answer: "Nirvana",
             name: "nirvana",
-            class:".nirvana",
+            class: ".nirvana",
         },
         {
             question: "Which popular Disney movie featured the song, \"Circle of Life\"?",
             choices: ["Aladdin", "Hercules", "Mulan", "The Lion King"],
             answer: "The Lion King",
             name: "king",
-            class:".king",
+            class: ".king",
         },
         {
             question: "Finish this line from the Fresh Prince of Bel-Air theme song: \"I whistled for a cab and when it came near, the license plate said...\"",
             choices: ["Dice", "Mirror", "Fresh", "Cab"],
             answer: "Fresh",
             name: "fresh",
-            class:".fresh",
+            class: ".fresh",
         },
         {
             question: "What was Doug's best friend's name?",
             choices: ["Skeeter", "Mark", "Zach", "Cody"],
             answer: "Skeeter",
             name: "skeeter",
-            class:".skeeter",
+            class: ".skeeter",
         },
         {
             question: "What was the name of the principal at Bayside High in Saved By The Bell?",
             choices: ["Mr. Zhou", "Mr. Driggers", "Mr. Belding", "Mr. Page"],
             answer: "Mr. Belding",
             name: "belding",
-            class:".belding",
+            class: ".belding",
         },
     ]
 
@@ -85,24 +85,25 @@ $(document).ready(function () {
         })
     };
 
-    var labels =["1st", "2nd", "3rd","4th"];
+    var labels = ["one", "two", "three", "four"];
 
     var displayQuestions = function () {
-        $('#questions :not("#submit-btn")').empty();
+        $('.questions :not("#submit-btn")').empty();
 
         // loops through questions
         for (var j = 0; j < questions.length; j++) {
-            $('#questions').prepend('div class="'+questions[j].name+'"></div>');
-            $(questions[j].class).append('<div>'+questions[j].question+'</div>');
+            $('.questions').prepend('div class="' + questions[j].name + '"></div>');
+            $(questions[j].class).append('<div>' + questions[j].question + '</div>');
+
+            //   loops through choices
+            for (var i = 0; i < 4; i++) {
+                $(questions[j].class).append('<input type="radio" name="' + questions[j].name + '"value="' + questions[j].choices[i] + '"/><label for="' + labels[i] + '">' + questions[j].choices[i] + '</label>');
+            }
+            $('.questions').prepend('<hr></hr>');
         }
-        //   loops through choices
-        for (var i = 0; i < questions.choices.length; i++) {
-            $(questions[j].class).append('<input type="radio" name="' + questions[j].name + '"value="' + questions[j].choices[i] + '"/><label for="' + labels[i] + '">' + questions[j].choices[i] + '</label>');
-        }
-        $('#questions').prepend('<hr></hr>');
     }
 
-    var triviaResult = function() {
+    var triviaResult = function () {
         $("#trivia").hide();
         var totalCorrect = 0;
         var totalWrong = 0;
